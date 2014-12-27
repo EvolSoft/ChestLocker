@@ -1,0 +1,44 @@
+name: ChestLocker
+main: ChestLocker\Main
+version: "1.2"
+api: [1.8.0]
+load: STARTUP
+author: EvolSoft
+description: Lock/Unlock Chests.
+website: https://www.evolsoft.tk
+
+commands:
+ chestlocker:
+   aliases: [chlock, chl, chestlock, cl]
+   description: ChestLocker commands.
+ lockchest:
+   description: Lock a Chest.
+ unlockchest:
+   description: Unlock a Chest.
+permissions:
+ chestlocker:
+  default: true
+  description: ChestLocker permissions.
+  children:
+   chestlocker.bypass:
+    default: op
+    description: Bypass Chest lock.
+   chestlocker.commands:
+    default: true
+    description: ChestLocker commands permissions.
+    children:
+      chestlocker.commands.help:
+       default: true
+       description: ChestLocker command Help permission.
+      chestlocker.commands.info:
+       default: op
+       description: ChestLocker command Info permission.
+      chestlocker.commands.reload:
+       default: op
+       description: ChestLocker command Reload permission.
+      chestlocker.commands.lockchest:
+       default: true
+       description: ChestLocker command LockChest permission.
+      chestlocker.commands.unlockchest:
+       default: true
+       description: ChestLocker command UnlockChest permission.
