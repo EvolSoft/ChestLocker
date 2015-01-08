@@ -22,8 +22,8 @@ Players can simply lock/unlock their chest using commands "/lockchest" and "/unl
 
 **Commands:**
 
-***/chestlocker*** *- ChestLocker commands*
-***/lockchest*** *- Lock a Chest*
+***/chestlocker*** *- ChestLocker commands*<br>
+***/lockchest*** *- Lock a Chest*<br>
 ***/unlockchest*** *- Unlock a Chest*
 
 **To-Do:**
