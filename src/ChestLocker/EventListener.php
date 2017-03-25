@@ -5,7 +5,7 @@
  * Developer: EvolSoft (Flavius12)
  * Website: http://www.evolsoft.tk
  * Date: 27/12/2014 03:32 PM (UTC)
- * Copyright & License: (C) 2014 EvolSoft
+ * Copyright & License: (C) 2014-2017 EvolSoft
  * Licensed under MIT (https://github.com/EvolSoft/ChestLocker/blob/master/LICENSE)
  */
 
@@ -121,4 +121,3 @@ class EventListener extends PluginBase implements Listener{
 		}
 	}
 }
-?>

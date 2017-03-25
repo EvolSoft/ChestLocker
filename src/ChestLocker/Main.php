@@ -5,7 +5,7 @@
  * Developer: EvolSoft (Flavius12)
  * Website: http://www.evolsoft.tk
  * Date: 27/12/2014 03:32 PM (UTC)
- * Copyright & License: (C) 2014 EvolSoft
+ * Copyright & License: (C) 2014-2017 EvolSoft
  * Licensed under MIT (https://github.com/EvolSoft/ChestLocker/blob/master/LICENSE)
  */
 
@@ -28,7 +28,10 @@ class Main extends PluginBase{
 	const MAIN_WEBSITE = "http://www.evolsoft.tk";
 	//Other Const
 	//Prefix
+	
 	const PREFIX = "&8[&4Chest&6Locker&8] ";
+	
+	//TODO: This is a mess
 	const _FILE = ".";
 	const _DIRECTORY = "chests/";
 	//Item Name/ID
@@ -40,7 +43,6 @@ class Main extends PluginBase{
 	public $data;
 
 	public function translateColors($symbol, $message){
-		
 		$message = str_replace($symbol."0", TextFormat::BLACK, $message);
 		$message = str_replace($symbol."1", TextFormat::DARK_BLUE, $message);
 		$message = str_replace($symbol."2", TextFormat::DARK_GREEN, $message);
@@ -143,4 +145,3 @@ class Main extends PluginBase{
     }
     
 }
-?>

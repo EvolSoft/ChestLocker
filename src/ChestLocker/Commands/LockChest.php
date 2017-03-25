@@ -5,7 +5,7 @@
  * Developer: EvolSoft (Flavius12)
  * Website: http://www.evolsoft.tk
  * Date: 27/12/2014 03:32 PM (UTC)
- * Copyright & License: (C) 2014 EvolSoft
+ * Copyright & License: (C) 2014-2017 EvolSoft
  * Licensed under MIT (https://github.com/EvolSoft/ChestLocker/blob/master/LICENSE)
  */
 
@@ -29,8 +29,7 @@ class LockChest extends PluginBase{
 	}
 	
 	public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
-		$fcmd = strtolower($cmd->getName());
-		switch($fcmd){
+		switch(strtolower($cmd->getName())){
 			case "lockchest":
 				if($sender->hasPermission("chestlocker.commands.lockchest")){
 					//Player Sender
@@ -56,4 +55,3 @@ class LockChest extends PluginBase{
 		}
 	}
 }
-?>
