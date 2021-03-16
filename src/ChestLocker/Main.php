@@ -38,10 +38,17 @@ class Main extends PluginBase{
 	const ITEM_NAME = "Chest";
 	const ITEM_NAME_2 = "chest";
 	const ITEM_ID = 54;
-	
+	/** @var array */
 	public $status;
+	/** @var string */
 	public $data;
 
+	/**
+	 * @param string $symbol
+	 * @param string $message
+	 *
+	 * @return string
+	 */
 	public function translateColors($symbol, $message){
 		$message = str_replace($symbol."0", TextFormat::BLACK, $message);
 		$message = str_replace($symbol."1", TextFormat::DARK_BLUE, $message);
@@ -70,6 +77,9 @@ class Main extends PluginBase{
 		return $message;
 	}
 	
+	/**
+	 * @return void
+	 */
     public function onEnable(){
         @mkdir($this->getDataFolder());
         @mkdir($this->getDataFolder() . Main::_DIRECTORY);
@@ -81,6 +91,12 @@ class Main extends PluginBase{
 	    $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
     }
     
+	/**
+	 * @param int $int
+	 * @param string $player
+	 *
+	 * @return void
+	 */
     public function setCommandStatus($int, $player){
     	//0 Empty
     	//1 Lock
@@ -90,6 +106,11 @@ class Main extends PluginBase{
     	}
     }
     
+	/**
+	 * @param string $player
+	 *
+	 * @return int
+	 */
     public function getCommandStatus($player){
     	if(isset($this->status[strtolower($player)])){
     		return $this->status[strtolower($player)];
@@ -99,14 +120,35 @@ class Main extends PluginBase{
     	}
     }
     
+	/**
+	 * @param string $player
+	 *
+	 * @return void
+	 */
     public function endCommandSession($player){
     	unset($this->status[strtolower($player)]);
     }
     
+	/**
+	 * @param string $level
+	 * @param string $x
+	 * @param string $y
+	 * @param string $z
+	 *
+	 * @return bool
+	 */
     public function isChestRegistered($level, $x, $y, $z){
     	return file_exists($this->data . Main::_DIRECTORY . strtolower($level . "/") . strtolower($x . Main::_FILE . $y.Main::_FILE . $z . ".yml"));
     }
     
+	/**
+	 * @param string $level
+	 * @param string $x
+	 * @param string $y
+	 * @param string $z
+	 *
+	 * @return bool|string
+	 */
     public function getChestOwner($level, $x, $y, $z){
     	if(file_exists($this->data . Main::_DIRECTORY . strtolower($level . "/") . strtolower($x . Main::_FILE . $y . Main::_FILE . $z . ".yml"))){
     		$chest = new Config($this->data . Main::_DIRECTORY . strtolower($level . "/") . strtolower($x . Main::_FILE . $y . Main::_FILE . $z . ".yml"), Config::YAML);
@@ -116,7 +158,16 @@ class Main extends PluginBase{
     		return false; //Failed: Chest not registered
     	}
     }
-    
+   
+	/**
+	 * @param string $level
+	 * @param string $x
+	 * @param string $y
+	 * @param string $z
+	 * @param string $player
+	 *
+	 * @return bool
+	 */
     public function lockChest($level, $x, $y, $z, $player){
     	@mkdir($this->data . Main::_DIRECTORY . strtolower($level . "/"));
     	if(file_exists($this->data . Main::_DIRECTORY . strtolower($level . "/") . strtolower($x . Main::_FILE . $y.Main::_FILE . $z . ".yml"))){
@@ -129,6 +180,15 @@ class Main extends PluginBase{
     	}
     }
     
+	/**
+	 * @param string $level
+	 * @param string $x
+	 * @param string $y
+	 * @param string $z
+	 * @param string $player
+	 *
+	 * @return int
+	 */
     public function unlockChest($level, $x, $y, $z, $player){
     	if(file_exists($this->data . Main::_DIRECTORY . strtolower($level . "/") . strtolower($x . Main::_FILE . $y . Main::_FILE . $z . ".yml"))){
     		$chest = new Config($this->data . Main::_DIRECTORY . strtolower($level . "/") . strtolower($x . Main::_FILE . $y . Main::_FILE . $z . ".yml"), Config::YAML);
